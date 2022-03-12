@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id = "counter"></div>
+    <button onclick="increment();">Increment</button>
+    <div id = "ans"></div>
+    <button onclick="bigCalc();">BigCalc</button>
+    <div id = "timer"></div>
+    <button onclick="start();">Timer</button>
+
+    <script type="text/javascript">
+        console.log("Hello World");
+        // let : numbers, strings, arrays, objects
+        let number = 1234;
+        let string = "abcd";
+        let array = [1, 2, 3, 4, 5];
+        let arrofarr = [ 
+            [1, 2, 3], 
+            ['a', 'b', 'c'], 
+            [42, 'hello', 'world']
+        ];
+        let obj = {name: 'Aditya', age: 19};
+        JSON.stringify(obj);
+
+        // simple operations (+, -, *, /, concat, ==, >)
+        let a = 42;
+        let b = 42;
+        let c = 40;
+        let eq = (a==b);
+        let gr = (a>c);
+        let d = 10;
+
+        // if else, (ternary?)
+        if (a == b) {
+            d = d * 2;
+        } else {
+            d = d + 2;
+        }
+        let ternary = b > c ? 'greater' : 'smaller';
+
+        // while for
+        while (a < 1000) {
+            a += b;
+        }
+        for (let i = 0; i < 5; i++) {
+            c += i*i;
+        }
+
+        // Array Indexing
+        for (let i = 0; i< array.length; i++) {
+            console.log(array[i]);
+        }
+
+        // String operations: length, split, join, slice
+        let str = "A quick, brown fox. jumped over. the lazy dog";
+        str.length;
+        str.split(' ');
+        array.join(' : ');
+        str.slice(3,7);
+
+        // DOM
+        dir(document.querySelector('div#counter'));
+        document.querySelector('body').style.backgroundColor = "#ccc";
+
+        // functions
+        function increment() {
+            const counter = document.querySelector('div#counter');
+            counter.innerText = Number(counter.innerText) + 1;
+        }
+
+        function timerIncrement() {
+            document.querySelector('div#timer').innerText = Number(document.querySelector('div#timer').innerText) + 0.1;
+        }
+        function start() {
+            const id = setInterval(timerIncrement, 100);
+        }
+
+        function bigCalc() {
+            const ans = document.querySelector('div#counter');
+            for (let i = 0; i < 100000; i++)
+                ans.innerText = Number(ans.innerText) + 1;
+            return ans.innerText;
+        }
+
+        // APIs
+        function API() {
+            let xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://api.covid19api.com/total/country/india/status/confirmed", false);
+            xhr.send();
+            let text = xhr.responseText;
+            let json = JSON.parse(text);
+            return json;
+        }
+    </script>
+</body>
+</html>
